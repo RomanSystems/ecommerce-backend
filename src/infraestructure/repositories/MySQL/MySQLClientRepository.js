@@ -1,4 +1,4 @@
-const pool = require('../database/mysqlConnection.js');
+const pool = require('../../database/mysqlConnection');
 
 class MySQLClientRepository {
 
