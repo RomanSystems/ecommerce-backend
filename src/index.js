@@ -1,12 +1,18 @@
 // import express
 const express = require('express');
+
 // variables de entorno
 const config = require('./config');
 console.log('>>> Config leída:', config);
-// repositorios
-const MongoProductRepository = require('./infraestructure/repositories/MongoProductRepository');
-const MongoClientRepository = require('./infraestructure/repositories/MongoClientRepository');
-const MySQLProductRepository = require('./infraestructure/repositories/MySQLProductRepository');
+
+// repositorio MongoDB
+const MongoProductRepository = require('./infraestructure/repositories/MongoDB/MongoProductRepository');
+const MongoClientRepository = require('./infraestructure/repositories/MongoDB/MongoClientRepository');
+
+// repositorio MySQL
+const MySQLProductRepository = require('./infraestructure/repositories/MySQL/MySQLProductRepository');
+const MySQLClientRepository = require('./infraestructure/repositories/MySQL/MySQLClientRepository');
+
 // controllers
 const ProductController = require('./adapters/controllers/ProductController');
 const ClientController = require('./adapters/controllers/ClientController');
@@ -29,6 +35,7 @@ let clientRepository;
 console.log('>>> DB_TYPE:', dbType);
 if (dbType === 'mysql') {
   productRepository = new MySQLProductRepository();
+  clientRepository = new MySQLClientRepository();
 } else {
   productRepository = new MongoProductRepository();
   clientRepository = new MongoClientRepository();

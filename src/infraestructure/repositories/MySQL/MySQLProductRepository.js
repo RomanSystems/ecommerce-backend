@@ -1,4 +1,4 @@
-const pool = require('../database/mysqlConnection');
+const pool = require('../database/mysqlConnection.js');
 
 class MySQLProductRepository {
   async create(productEntity) {

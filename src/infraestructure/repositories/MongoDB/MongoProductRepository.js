@@ -1,6 +1,6 @@
-const ProductRepository = require('../../domain/repositories/ProductRepository');
-const ProductModel = require('../database/models/ProductModel');
-const Product = require('../../domain/entities/Product');
+const ProductRepository = require('../../../domain/repositories/ProductRepository');
+const ProductModel = require('../../database/models/ProductModel');
+const Product = require('../../../domain/entities/Product');
 
 class MongoProductRepository extends ProductRepository {
   async getAll() {

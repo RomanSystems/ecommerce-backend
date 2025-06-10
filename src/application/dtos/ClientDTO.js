@@ -1,6 +1,6 @@
 class ClientDTO {
   constructor(client) {
-    this.id = client.id;
+    // this.id = client.id;
     this.name = client.name;
     this.address = client.address;
     this.nitCi = client.nitCi

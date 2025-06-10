@@ -1,13 +1,13 @@
 class Client {
   constructor({ 
-id,
+// id,
 name,
 address,
 nitCi,
 email,
 phone
   }) {
-    this.id = id;
+    // this.id = id;
     this.name = name;
     this.address = address;
     this.nitCi = nitCi
