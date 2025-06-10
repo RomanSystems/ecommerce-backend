@@ -1,13 +1,16 @@
-import express from "express";
-const router = express.Router();
+// importamos el router
+import { Router } from "express";
 
-router.get('/', (req, res) => {
-    res.send('lista de clientes');
-})
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    res.send(`cliente con id ${id}`);
-})
+// instanciamos
+const router = Router();
 
-module.exports = router;
+router.get('/', function (req, res) { 
+    return res.send("pagina prinicipal de clientes");
+});
+
+router.get('/:id', function (req, res) {
+    const {id} = req.params; 
+    return res.send(`cliente con id ${id}`) ;
+});
+
 export default router;
