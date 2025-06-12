@@ -4,6 +4,7 @@ const Product = require('../../../domain/entities/Product');
 
 class MongoProductRepository extends ProductRepository {
   async getAll() {
+    console.log('>>> Retrieving all products from MongoDB');
     const products = await ProductModel.find();
     console.log('Products retrieved from MongoDB:', products);
     return products.map(p => new Product(p.toObject()));

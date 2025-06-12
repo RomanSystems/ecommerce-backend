@@ -1,9 +1,11 @@
 const CreateClient = require('../../application/useCases/CreateClient');
+const GetAllClients = require('../../application/useCases/GetAllClients');
 const ClientDTO = require('../../application/dtos/ClientDTO');
 
 class ClientController {
   constructor(clientRepository) {
     this.createClient = new CreateClient(clientRepository);
+    this.getAllClients = new GetAllClients(clientRepository);
   }
 
   async create(req, res) {
@@ -15,9 +17,10 @@ class ClientController {
       res.status(400).json({ message: error.message });
     }
   }
+
   async getAll(req, res) {
     try {
-      const clients = await this.clientRepository.getAll();
+      const clients = await this.getAllClients.execute();
       res.status(200).json(clients);
     } catch (err) {
       res.status(500).json({ message: 'Error retrieving clients' });

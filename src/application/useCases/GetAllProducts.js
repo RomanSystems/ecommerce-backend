@@ -1,16 +1,9 @@
-const Product = require('../../domain/entities/Product');
-
-class CreateProduct {
+class GetAllProduct {
   constructor(productRepository) {
     this.productRepository = productRepository;
   }
 
-  async execute(productData) {
-    const product = new Product(productData);
-    return await this.productRepository.create(product);
-  }
-
-  async getAll() {
+  async execute() {
     console.log('>>> Retrieving all products from use case');
     const products = await this.productRepository.getAll();
     console.log('Products retrieved from use case:', products);
@@ -18,4 +11,4 @@ class CreateProduct {
   }
 }
 
-module.exports = CreateProduct;
+module.exports = GetAllProduct;
