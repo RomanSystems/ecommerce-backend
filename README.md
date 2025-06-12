@@ -3,6 +3,7 @@
 ## Cambios agregados
 Creacion de entidad "Client", agregado en todas las capas
 
+![alt text](miscelanius/image-2.png)
 ![alt text](miscelanius/image-1.png)
 
 **iniciar postman**
@@ -10,13 +11,13 @@ Se envian los datos para que inserte en la base de datos
 
 ![alt text](miscelanius/image.png)
 
-**Base de datos MongoDB**
-
-![alt text](miscelanius/mongoClient.png)
-
 **Base de datos MySQL**
 
 ![alt text](miscelanius/imageMysql.png)
+
+**Base de datos MongoDB**
+
+![alt text](miscelanius/mongoClient.png)
 
 ## Nuevas caracteristicas agregadas Obtener productos y Refresh Token
 
