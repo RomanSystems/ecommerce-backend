@@ -31,6 +31,7 @@ const MongoUserRepository     = require('./infraestructure/repositories/MongoDB/
 const PasswordHasher          = require('./infraestructure/services/PasswordHasher');
 const TokenGenerator          = require('./infraestructure/services/TokenGenerator');
 const SignIn                  = require('./application/useCases/SignIn');
+const RefreshToken                  = require('./application/useCases/RefreshToken');
 const authRoutes              = require('./adapters/routes/authRoutes');
 const userRoutes          = require('./adapters/routes/userRoutes');
 const SignUp              = require('./application/useCases/SignUp');
@@ -63,7 +64,8 @@ const userRepo       = new MongoUserRepository();
 const passwordHasher = new PasswordHasher();
 const tokenGen       = new TokenGenerator();
 const signInUseCase  = new SignIn(userRepo, passwordHasher, tokenGen);
-app.use('/api/v1/auth', authRoutes(signInUseCase));
+const refreshTokenUseCase  = new RefreshToken(tokenGen);
+app.use('/api/v1/auth', authRoutes(signInUseCase, refreshTokenUseCase));
 
 // ——— SETUP SIGNUP ———
 const signUpUseCase = new SignUp(userRepo, passwordHasher);

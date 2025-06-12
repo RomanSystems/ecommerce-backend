@@ -1,0 +1,674 @@
+{
+	"info": {
+		"_postman_id": "3eb115d6-6ef6-42e2-a70d-3d557f8485ea",
+		"name": "ecommerce-backend",
+		"description": "Se modificará algunos nombres o entidades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7382303",
+		"_collection_link": "https://www.postman.com/orange-crater-8086/workspace/full-stack-web-developer-backend/collection/7382303-3eb115d6-6ef6-42e2-a70d-3d557f8485ea?action=share&source=collection_link&creator=7382303"
+	},
+	"item": [
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"roman\",\r\n    \"password\":\"roman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:5000/api/v1/users",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"roman\",\r\n    \"password\":\"roman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-hLRyLdwF9mIS1IdIXLgXeldGCAI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 02:40:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Username already taken\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Autenticar Usuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"roman\",\r\n    \"password\":\"roman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Autenticar Usuario",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"roman\",\r\n    \"password\":\"roman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "620"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26c-B3PNRA4niLKP3YmA6QYJ5eseIu8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:14:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"_id\": \"684a19b4906c887ea6637b71\",\n        \"username\": \"roman\",\n        \"roles\": [\n            \"user\"\n        ],\n        \"createdAt\": \"2025-06-12T00:05:08.728Z\",\n        \"updatedAt\": \"2025-06-12T00:05:08.728Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGExOWI0OTA2Yzg4N2VhNjYzN2I3MSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzQ5Njk4MDY3LCJleHAiOjE3NDk3MDE2Njd9.w-WwJQCnbbvtvVEpPj4KIDmtSvjcmD_zkNf37doi0Uo\",\n    \"expiresIn\": \"1h\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGExOWI0OTA2Yzg4N2VhNjYzN2I3MSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzQ5Njk4MDY3LCJleHAiOjE3NDk3MTI0Njd9.gQbOBU00AyFz9g04MEZn-zRxjAZjfafIZTQQqbU1mgI\",\n    \"expireRefreshIn\": \"4h\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Refrescar Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{REFRESH_TOKEN}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/auth/refresh-token",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Refrescar Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"{{REFRESH_TOKEN}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/auth/refresh-token",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "462"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ce-m3r3f9BS0zbh520i3+tNAFxnry0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:15:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"newToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGExOWI0OTA2Yzg4N2VhNjYzN2I3MSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzQ5Njk4MTE4LCJleHAiOjE3NDk3MDE3MTh9.qI2o0OTlKfLD6C8e-SjRNVjM6g6XYRmjq-K2JDox5lA\",\n    \"expiresIn\": \"1h\",\n    \"newRefreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGExOWI0OTA2Yzg4N2VhNjYzN2I3MSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzQ5Njk4MTE4LCJleHAiOjE3NDk3MTI1MTh9.gIMwT1Cz7i5EYIrnVLraZYjlGF-wgW94eiZLBjWANN8\",\n    \"expireRefreshIn\": \"4h\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Producto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Silla Desetrezante\",\r\n    \"description\": \"Perfecto para estar sentado programando todo el dia\",\r\n    \"price\": 2000,\r\n    \"stock\": 5,\r\n    \"category\": \"Muebles\",\r\n    \"imageUrl\": \"no-image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Silla Desetrezante\",\r\n    \"description\": \"Perfecto para estar sentado programando todo el dia\",\r\n    \"price\": 2000,\r\n    \"stock\": 5,\r\n    \"category\": \"Muebles\",\r\n    \"imageUrl\": \"no-image.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a7-sPyXa2e+PCOfljZCENa1BYaZ8o0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:16:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Silla Desetrezante\",\n    \"description\": \"Perfecto para estar sentado programando todo el dia\",\n    \"price\": 2000,\n    \"stock\": 5,\n    \"category\": \"Muebles\",\n    \"imageUrl\": \"no-image.jpg\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Productos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Productos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "488"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1e8-c7MTc6d+4ElbTcDHHzp1/M4ZaBk\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:17:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"Nuevo Producto creado\",\n        \"description\": \"Descripción del producto\",\n        \"price\": 1000,\n        \"stock\": 10,\n        \"category\": \"Electrónica\",\n        \"imageUrl\": \"no-image.jpg\"\n    },\n    {\n        \"name\": \"Silla Desetrezante\",\n        \"description\": \"Perfecto para estar sentado programando todo el dia\",\n        \"price\": 2000,\n        \"stock\": 5,\n        \"category\": \"Muebles\",\n        \"imageUrl\": \"no-image.jpg\"\n    },\n    {\n        \"name\": \"Silla Desetrezante\",\n        \"description\": \"Perfecto para estar sentado programando todo el dia\",\n        \"price\": 2000,\n        \"stock\": 5,\n        \"category\": \"Muebles\",\n        \"imageUrl\": \"no-image.jpg\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Crear Cliente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Pedro Fernandez\",\r\n\t\"address\": \"Mexico City\",\r\n\t\"nitCi\": \"111131231\",\r\n\t\"email\": \"pedro@fernandez.com\",\r\n\t\"phone\": \"74252342\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/clients",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Cliente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Pedro Fernandez\",\r\n\t\"address\": \"Mexico City\",\r\n\t\"nitCi\": \"111131231\",\r\n\t\"email\": \"pedro@fernandez.com\",\r\n\t\"phone\": \"74252342\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/v1/clients",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-0faS+veN+Hs1uGz1UYM2XBAuzsk\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:18:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Pedro Fernandez\",\n    \"address\": \"Mexico City\",\n    \"nitCi\": \"111131231\",\n    \"email\": \"pedro@fernandez.com\",\n    \"phone\": \"74252342\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Clientes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/clients",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Clientes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/v1/clients",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "302"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12e-JjQZ0lbhMf/YXT71grUudfZum8k\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 03:18:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"1\",\n        \"address\": \"1\",\n        \"nitCi\": \"1\",\n        \"email\": \"1\",\n        \"phone\": \"1\"\n    },\n    {\n        \"name\": \"Pedro Infante\",\n        \"address\": \"Mexico City\",\n        \"nitCi\": \"1112131213\",\n        \"email\": \"pedro@infate.com\",\n        \"phone\": \"1237612312\"\n    },\n    {\n        \"name\": \"Pedro Fernandez\",\n        \"address\": \"Mexico City\",\n        \"nitCi\": \"111131231\",\n        \"email\": \"pedro@fernandez.com\",\n        \"phone\": \"74252342\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

@@ -18,6 +18,18 @@ Se envian los datos para que inserte en la base de datos
 
 ![alt text](miscelanius/imageMysql.png)
 
+## Nuevas caracteristicas agregadas Obtener productos y Refresh Token
+
+![alt text](miscelanius/imagePostman.png)
+
+**Se incorporó el archivo para postman y se pueda hacer pruebas**
+
+ecommerce-backend.postman_collection.json
+
+![alt text](miscelanius/imageArchivoPostman.png)
+
+---
+
 **Proyecto educativo**: Este repositorio contiene el backend de una aplicación de comercio electrónico, desarrollado con Node.js y Express. Está diseñado con fines educativos para comprender la estructura y funcionamiento de una API RESTful en un entorno de comercio electrónico.
 
 ## Requisitos previos
