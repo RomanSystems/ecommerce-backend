@@ -6,35 +6,47 @@ const config = require('./config');
 console.log('>>> Config leída:', config);
 
 // repositorio MongoDB
-const MongoProductRepository = require('./infraestructure/repositories/MongoDB/MongoProductRepository');
-const MongoClientRepository = require('./infraestructure/repositories/MongoDB/MongoClientRepository');
+const MongoProductRepository  = require('./infraestructure/repositories/MongoDB/MongoProductRepository');
+const MongoCustomerRepository = require('./infraestructure/repositories/MongoDB/MongoCustomerRepository');
+const MongoUserRepository     = require('./infraestructure/repositories/MongoDB/MongoUserRepository');
+const MongoOrderRepository    = require('./infraestructure/repositories/MongoDB/MongoOrderRepository');
+const MongoCouponRepository   = require('./infraestructure/repositories/MongoDB/MongoCouponRepository');
 
 // repositorio MySQL
-const MySQLProductRepository = require('./infraestructure/repositories/MySQL/MySQLProductRepository');
-const MySQLClientRepository = require('./infraestructure/repositories/MySQL/MySQLClientRepository');
+const MySQLProductRepository  = require('./infraestructure/repositories/MySQL/MySQLProductRepository');
+const MySQLCustomerRepository = require('./infraestructure/repositories/MySQL/MySQLCustomerRepository');
 
 // controllers
-const ProductController = require('./adapters/controllers/ProductController');
-const ClientController = require('./adapters/controllers/ClientController');
+const ProductController       = require('./adapters/controllers/ProductController');
+const CustomerController      = require('./adapters/controllers/CustomerController');
+const OrderController         = require('./adapters/controllers/OrderController');
+const CouponController        = require('./adapters/controllers/CouponController');
+const UserController          = require('./adapters/controllers/UserController');
+
 // import rutas
-const productRoutes = require('./adapters/routes/productRoutes');
-const clientRoutes = require('./adapters/routes/clientRoutes');
+const productRoutes           = require('./adapters/routes/productRoutes');
+const customerRoutes          = require('./adapters/routes/customerRoutes');
+const orderRoutes             = require('./adapters/routes/orderRoutes');
+const couponRoutes            = require('./adapters/routes/couponRoutes');
+// Rutas de autenticación
+const authRoutes              = require('./adapters/routes/authRoutes');
+const userRoutes              = require('./adapters/routes/userRoutes');
 
-const { verifyToken } = require('./adapters/middlewares/authJwt');
+// Middlewares
+const { verifyToken }         = require('./adapters/middlewares/authJwt');
+// Swagger
+// Swagger UI
+const swaggerUI               = require('swagger-ui-express');
+const swaggerSpec             = require('./infraestructure/docs/swaggerConfig');
 
-const swaggerUI = require('swagger-ui-express');
-const swaggerSpec = require('./infraestructure/docs/swaggerConfig');
-
-// repositorio MongoDB
-const MongoUserRepository     = require('./infraestructure/repositories/MongoDB/MongoUserRepository');
-
+// Servicios
 const PasswordHasher          = require('./infraestructure/services/PasswordHasher');
 const TokenGenerator          = require('./infraestructure/services/TokenGenerator');
+
+// Use Cases
+const RefreshToken            = require('./application/useCases/RefreshToken');
 const SignIn                  = require('./application/useCases/SignIn');
-const RefreshToken                  = require('./application/useCases/RefreshToken');
-const authRoutes              = require('./adapters/routes/authRoutes');
-const userRoutes          = require('./adapters/routes/userRoutes');
-const SignUp              = require('./application/useCases/SignUp');
+const SignUp                  = require('./application/useCases/SignUp');
 
 const app = express();
 const port = config.port;
@@ -42,18 +54,26 @@ const port = config.port;
 // Dependencies
 const dbType = config.DB_TYPE || 'mongodb'; // 'mongo' o 'mysql'
 let productRepository;
-let clientRepository;
+let customerRepository;
+let orderRepository;
+let couponRepository;
 console.log('>>> DB_TYPE:', dbType);
 if (dbType === 'mysql') {
   productRepository = new MySQLProductRepository();
-  clientRepository = new MySQLClientRepository();
+  customerRepository = new MySQLCustomerRepository();
+  // orderRepository = new MySQLOrderRepository();
+  // couponRepository = new MySQLCouponRepository();
 } else {
   productRepository = new MongoProductRepository();
-  clientRepository = new MongoClientRepository();
+  customerRepository = new MongoCustomerRepository();
+  orderRepository = new MongoOrderRepository();
+  couponRepository = new MongoCouponRepository();
 }
 
 const productController = new ProductController(productRepository);
-const clientController = new ClientController(clientRepository);
+const customerController = new CustomerController(customerRepository);
+const orderController = new OrderController(orderRepository);
+const couponController = new CouponController(couponRepository);
 
 // Middlewares
 app.use(express.json());
@@ -75,7 +95,9 @@ app.use('/api/v1/users',express.json(),userRoutes(signUpUseCase));
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 // Routes
 app.use('/api/v1/products', verifyToken, productRoutes(productController));
-app.use('/api/v1/clients', verifyToken, clientRoutes(clientController));
+app.use('/api/v1/customers', verifyToken, customerRoutes(customerController));
+app.use('/api/v1/orders', verifyToken, orderRoutes(orderController));
+app.use('/api/v1/coupons', verifyToken, couponRoutes(couponController));
 
 // Error Handling
 app.use((err, req, res, next) => {
@@ -90,11 +112,11 @@ app.listen(port, () => {
 
 
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const { MongoCustomer, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://roman:<db_password>@clusterroman.qyjqsnk.mongodb.net/?retryWrites=true&w=majority&appName=ClusterRoman";
 
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
+// // Create a MongoCustomer with a MongoCustomerOptions object to set the Stable API version
+// const customer = new MongoCustomer(uri, {
 //   serverApi: {
 //     version: ServerApiVersion.v1,
 //     strict: true,
@@ -104,14 +126,14 @@ app.listen(port, () => {
 
 // async function run() {
 //   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
+//     // Connect the customer to the server	(optional starting in v4.7)
+//     await customer.connect();
 //     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
+//     await customer.db("admin").command({ ping: 1 });
 //     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 //   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
+//     // Ensures that the customer will close when you finish/error
+//     await customer.close();
 //   }
 // }
 // run().catch(console.dir);

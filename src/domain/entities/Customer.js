@@ -1,11 +1,11 @@
-class Client {
-  constructor({ 
-// id,
-name,
-address,
-nitCi,
-email,
-phone
+class Customer {
+  constructor({
+    // id,
+    name,
+    address,
+    nitCi,
+    email,
+    phone
   }) {
     // this.id = id;
     this.name = name;
@@ -16,4 +16,4 @@ phone
   }
 }
 
-module.exports = Client;
+module.exports = Customer;
