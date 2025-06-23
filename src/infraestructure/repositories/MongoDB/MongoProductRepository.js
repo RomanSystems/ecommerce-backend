@@ -14,6 +14,15 @@ class MongoProductRepository extends ProductRepository {
     const newProduct = await ProductModel.create(product);
     return new Product(newProduct.toObject());
   }
+
+  async getPaginated(page, limit) {
+    console.log(`>>> Retrieving products from MongoDB with pagination: page ${page}, limit ${limit}`);
+    const products = await ProductModel.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
+    console.log('Paginated products retrieved from MongoDB:', products);
+    return products.map(p => new Product(p.toObject()));
+  }
 }
 
 module.exports = MongoProductRepository;

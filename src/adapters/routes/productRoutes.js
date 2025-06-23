@@ -37,6 +37,42 @@ module.exports = (productController) => {
 
   router.get('/', (req, res) => productController.getAll(req, res));
   
+  /**
+   * @swagger
+   * /get:
+   *  get:
+   *  summary: Obtiene productos paginados
+   * tags: [Products]
+   * security:
+   *  - BearerAuth: []
+   * parameters:
+   * - in: query
+   * name: page
+   * schema:
+   * type: integer
+   * default: 1
+   * description: Número de página
+   * - in: query
+   * name: limit
+   * schema:
+   * type: integer
+   * default: 10
+   * description: Número de productos por página
+   * responses:
+   * 200:
+   * description: Productos paginados
+   * content:
+   * application/json:
+   * schema:
+   * type: array
+   * items:
+   * $ref: '#/components/schemas/Product'
+   * 401:
+   * description: No autorizado
+   * 500:
+   * description: Error del servidor
+   */
+  router.get('/paginated', (req, res) => productController.getPaginated(req, res));
 
  /**
    * @swagger
