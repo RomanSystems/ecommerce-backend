@@ -124,3 +124,13 @@ Este proyecto es de código abierto y está abierto a contribuciones. Si deseas 
 ## Licencia
 
 Este proyecto es de tipo educativo 
+
+## Agregado extra paginación
+
+Como agregado extra se implemento la paginación a la partde de productos
+
+![alt text](miscelanius/paginacion1.png)
+
+Ahora se pude mostar en paginación los productos
+![alt text](miscelanius/paginacion2.png)
+![alt text](miscelanius/paginacion3.png)
